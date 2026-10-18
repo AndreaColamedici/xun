@@ -735,7 +735,7 @@
             <div class="research-stats reveal">
                 <div class="stat"><div class="stat-num" data-count="41">0</div><div class="stat-label" data-i18n="stat-works">works</div></div>
                 <div class="stat"><div class="stat-num" data-count="6">0</div><div class="stat-label" data-i18n="stat-langs">languages</div></div>
-                <div class="stat"><div class="stat-num" data-count="18">0</div><div class="stat-label" data-i18n="stat-months">months since the reveal</div></div>
+                <div class="stat"><div class="stat-num" data-count="18" id="months-stat">0</div><div class="stat-label" data-i18n="stat-months">months since the reveal</div></div>
             </div>
             <div class="readings reveal">
                 <div class="reading"><p class="reading-text">« La révélation de sa nature construite n'invalide en rien le concept d'hypnocratie. Au contraire, elle le renforce en lui conférant une dimension performative. »</p><p class="reading-src">Nathalie Roelens · Université du Luxembourg<br>Lecture littéraire et archives du personnage, ÉPURE 2026</p></div>
@@ -932,7 +932,7 @@
         const breath = 1 + Math.sin(t * 0.35) * 0.06;
         for (let k = 0; k < RINGS; k++) {
             const R = (baseR + k * baseR * 0.42) * breath;
-            const a = 0.03 + 0.12 * (1 - k / RINGS);
+            const a = 0.05 + 0.17 * (1 - k / RINGS);
             ctx.beginPath();
             for (let i = 0; i <= PTS; i++) {
                 const th = (i / PTS) * Math.PI * 2;
@@ -946,7 +946,7 @@
                 i ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
             }
             ctx.strokeStyle = `rgba(42, 107, 107, ${a})`;
-            ctx.lineWidth = 0.7;
+            ctx.lineWidth = 0.8;
             ctx.stroke();
         }
         const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, baseR * 6);
@@ -1108,6 +1108,7 @@
         navLinks.forEach((a, i) => a.classList.toggle('current', i === cur));
     }, { passive: true });
 
+    (function(){ const m=document.getElementById('months-stat'); if(m){ const a=new Date(2025,3,4), b=new Date(); m.dataset.count=(b.getFullYear()-a.getFullYear())*12+(b.getMonth()-a.getMonth())-(b.getDate()<a.getDate()?1:0); } })();
     const counters = document.querySelectorAll('[data-count]');
     const cObs = new IntersectionObserver(entries => entries.forEach(en => {
         if (!en.isIntersecting) return; cObs.unobserve(en.target);
@@ -1174,7 +1175,7 @@
             'tl-1-date': 'January 2025',
             'tl-1-text': '<strong>Ipnocrazia</strong> is published in Italy by Edizioni Tlon, signed by Jianwei Xun, a philosopher from Hong Kong. The first chapter, “The Berlin Experiment”, tells of a fictitious philosopher invented with an AI. Nobody checks.',
             'tl-2-date': '26 March 2025',
-            'tl-2-text': '<strong>El País</strong> publishes Xun’s essay on hypnocracy. The Spanish edition (Rosamerón) is in bookshops; the French one (Philosophie Magazine éditeur) is announced for 4 April.',
+            'tl-2-text': '<strong>El País</strong> publishes Xun’s essay on hypnocracy, under his name. The Spanish edition (Rosamerón) and the French one (Philosophie Magazine éditeur) follow.',
             'tl-3-date': '4 April 2025',
             'tl-3-text': '<strong>The reveal.</strong> Andrea Colamedici announces, on the same day in Italian, French and Spanish, that Xun has no body: he was born from months of dialogue between a philosopher and two artificial intelligences.',
             'tl-4-date': 'April 2025',
@@ -1245,7 +1246,7 @@
             'tl-1-date': 'Enero de 2025',
             'tl-1-text': '<strong>Ipnocrazia</strong> se publica en Italia con Edizioni Tlon, firmado por Jianwei Xun, filósofo de Hong Kong. El primer capítulo, “El experimento de Berlín”, cuenta la historia de un filósofo ficticio inventado con una IA. Nadie comprueba.',
             'tl-2-date': '26 de marzo de 2025',
-            'tl-2-text': '<strong>El País</strong> publica el ensayo de Xun sobre la hipnocracia. La edición española (Rosamerón) está en librerías; la francesa (Philosophie Magazine éditeur) se anuncia para el 4 de abril.',
+            'tl-2-text': '<strong>El País</strong> publica el ensayo de Xun sobre la hipnocracia, con su firma. Siguen la edición española (Rosamerón) y la francesa (Philosophie Magazine éditeur).',
             'tl-3-date': '4 de abril de 2025',
             'tl-3-text': '<strong>La revelación.</strong> Andrea Colamedici anuncia, el mismo día en italiano, francés y español, que Xun no tiene cuerpo: nació de meses de diálogo entre un filósofo y dos inteligencias artificiales.',
             'tl-4-date': 'Abril de 2025',
@@ -1316,7 +1317,7 @@
             'tl-1-date': 'Gennaio 2025',
             'tl-1-text': '<strong>Ipnocrazia</strong> esce in Italia per Edizioni Tlon, firmato da Jianwei Xun, filosofo di Hong Kong. Il primo capitolo, “L’esperimento di Berlino”, racconta di un filosofo fittizio inventato con un’IA. Nessuno controlla.',
             'tl-2-date': '26 marzo 2025',
-            'tl-2-text': '<strong>El País</strong> pubblica il saggio di Xun sull’ipnocrazia. L’edizione spagnola (Rosamerón) è in libreria; quella francese (Philosophie Magazine éditeur) è annunciata per il 4 aprile.',
+            'tl-2-text': '<strong>El País</strong> pubblica il saggio di Xun sull’ipnocrazia, a sua firma. Seguono l’edizione spagnola (Rosamerón) e quella francese (Philosophie Magazine éditeur).',
             'tl-3-date': '4 aprile 2025',
             'tl-3-text': '<strong>La rivelazione.</strong> Andrea Colamedici annuncia, lo stesso giorno in italiano, francese e spagnolo, che Xun non ha un corpo: è nato da mesi di dialogo tra un filosofo e due intelligenze artificiali.',
             'tl-4-date': 'Aprile 2025',
