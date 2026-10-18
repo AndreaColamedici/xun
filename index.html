@@ -503,9 +503,89 @@
         .reveal.visible { opacity: 1; transform: translateY(0); }
         .reveal-stagger { transition-delay: calc(var(--i, 0) * 0.1s); }
 
+
+        /* ── PROGRESS + NAV ── */
+        .progress { position: fixed; top: 0; left: 0; height: 2px; width: 0; background: var(--ottanio); z-index: 200; transition: width 0.1s linear; }
+        .site-nav { display: flex; gap: 1.6rem; position: absolute; left: 50%; transform: translateX(-50%); }
+        .site-nav a { font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.45; transition: opacity 0.3s; cursor: none; }
+        .site-nav a:hover, .site-nav a.current { opacity: 1; }
+        header { align-items: center; }
+
+        /* ── MARQUEE ── */
+        .marquee { overflow: hidden; border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); background: var(--nero); padding: 1.1rem 0; }
+        .marquee-track { display: flex; gap: 4rem; white-space: nowrap; width: max-content; animation: marquee 48s linear infinite; }
+        .marquee:hover .marquee-track { animation-play-state: paused; }
+        .marquee-track span { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.15rem; color: rgba(255,255,255,0.5); }
+        .marquee-track span::after { content: '·'; margin-left: 4rem; color: var(--ottanio); }
+        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* ── STATEMENT ── */
+        .statement { margin-top: 4rem; padding: 3rem 0 0; border-top: 1px solid var(--grigio-chiaro); }
+        .statement-text { font-family: 'Instrument Serif', serif; font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.2; color: var(--nero); }
+        .statement-text em { color: var(--ottanio); font-style: italic; }
+        .statement-src { margin-top: 1.2rem; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--grigio); }
+
+        /* ── LEXICON 4 cols ── */
+        .concetti-grid { grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 1300px; }
+        .concetto { padding: 2rem; }
+        .concetto:hover { transform: translateY(-6px); }
+        .concetto-title { font-size: 1.3rem; }
+        .concetto-desc { font-size: 0.9rem; line-height: 1.75; }
+
+        /* ── TIMELINE ── */
+        .operation { padding: 10rem 3rem; background: var(--nero); position: relative; }
+        .operation-header { text-align: center; margin-bottom: 5rem; }
+        .operation-header h2 { font-family: 'Instrument Serif', serif; font-size: clamp(2.2rem, 4.5vw, 3.5rem); font-weight: 400; }
+        .operation-header h2 em { font-style: italic; color: var(--ottanio); }
+        .operation-header p { max-width: 640px; margin: 1.2rem auto 0; color: rgba(255,255,255,0.5); line-height: 1.7; font-size: 0.95rem; }
+        .timeline { max-width: 880px; margin: 0 auto; position: relative; }
+        .timeline::before { content: ''; position: absolute; left: 180px; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, rgba(42,107,107,0.6) 10%, rgba(42,107,107,0.6) 90%, transparent); }
+        .tl-item { display: grid; grid-template-columns: 180px 1fr; gap: 3rem; padding: 1.6rem 0; position: relative; }
+        .tl-item::before { content: ''; position: absolute; left: 176px; top: 2.05rem; width: 9px; height: 9px; border-radius: 50%; background: var(--nero); border: 1px solid var(--ottanio); transition: background 0.4s, box-shadow 0.4s; }
+        .tl-item:hover::before, .tl-item.visible.lit::before { background: var(--ottanio); box-shadow: 0 0 18px var(--ottanio-glow); }
+        .tl-date { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.1rem; color: var(--ottanio); text-align: right; padding-right: 1.5rem; line-height: 1.5; }
+        .tl-text { font-size: 1rem; line-height: 1.8; color: rgba(255,255,255,0.7); }
+        .tl-text strong { color: var(--bianco); font-weight: 500; }
+        .tl-item.key .tl-text { font-family: 'Instrument Serif', serif; font-size: 1.35rem; line-height: 1.5; color: var(--bianco); }
+
+        /* ── RESEARCH ── */
+        .research-stats { display: flex; justify-content: center; gap: 4rem; margin: 2.5rem auto 3.5rem; flex-wrap: wrap; }
+        .stat { text-align: center; }
+        .stat-num { font-family: 'Instrument Serif', serif; font-size: clamp(2.4rem, 5vw, 3.6rem); line-height: 1; color: var(--nero); }
+        .stat-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--grigio); margin-top: 0.5rem; }
+        .readings { max-width: 1100px; margin: 0 auto 4rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .reading { padding: 2rem; background: var(--bianco); border: 1px solid var(--grigio-chiaro); display: flex; flex-direction: column; gap: 1.2rem; transition: transform 0.4s ease, box-shadow 0.4s ease; }
+        .reading:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.06); }
+        .reading-text { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.1rem; line-height: 1.55; color: var(--nero); flex: 1; }
+        .reading-src { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ottanio); line-height: 1.6; }
+        .filters { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .filter { font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.6rem 1.1rem; border: 1px solid var(--grigio-chiaro); color: var(--grigio); transition: all 0.3s; cursor: none; background: transparent; }
+        .filter:hover, .filter.active { border-color: var(--ottanio); color: var(--ottanio); }
+        .rassegna-item.hidden { display: none; }
+        #accademia .rassegna-grid { grid-template-columns: repeat(2, 1fr); }
+        .rassegna-item { position: relative; }
+        .rassegna-item::after { content: '↗'; position: absolute; right: 1.2rem; top: 1.2rem; font-size: 0.8rem; color: var(--ottanio); opacity: 0; transform: translate(-4px, 4px); transition: all 0.3s; }
+        .rassegna-item:hover::after { opacity: 1; transform: translate(0,0); }
+
+        /* ── SECTION NUM ── */
+        .section-num { position: absolute; top: 3rem; left: 3rem; font-size: 0.66rem; letter-spacing: 0.3em; color: var(--ottanio); opacity: 0.8; }
+        section { position: relative; }
+
+        @media (max-width: 1100px) { .concetti-grid { grid-template-columns: repeat(2, 1fr); } .readings { grid-template-columns: 1fr; } }
+        @media (max-width: 1000px) { .site-nav { display: none; } }
+        @media (max-width: 768px) {
+            .timeline::before { left: 8px; }
+            .tl-item { grid-template-columns: 1fr; gap: 0.4rem; padding-left: 2rem; }
+            .tl-item::before { left: 4px; }
+            .tl-date { text-align: left; padding: 0; }
+            .research-stats { gap: 2rem; }
+            .section-num { left: 1.5rem; top: 2rem; }
+            .operation { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .concetti-grid { grid-template-columns: 1fr; }
+        }
+
         /* ── RESPONSIVE ── */
         @media (max-width: 1000px) {
-            .concetti-grid { grid-template-columns: 1fr; }
             .copertine-grid { grid-template-columns: repeat(2, 1fr); }
             .rassegna-grid { grid-template-columns: 1fr; }
             .book-row, .book-row.reversed {
@@ -535,8 +615,17 @@
     <div class="cursor-ring" id="cursor-ring"></div>
     <div class="grain"></div>
 
+    <div class="progress" id="progress"></div>
     <header>
         <span class="site-name">Jianwei Xun</span>
+        <nav class="site-nav">
+            <a href="#who" data-i18n="nav-who">Who</a>
+            <a href="#lexicon" data-i18n="nav-lexicon">Lexicon</a>
+            <a href="#operation" data-i18n="nav-operation">The operation</a>
+            <a href="#press" data-i18n="nav-press">Press</a>
+            <a href="#research" data-i18n="nav-research">Research</a>
+            <a href="#books" data-i18n="nav-books">Books</a>
+        </nav>
         <div class="lang-switch">
             <a class="active" onclick="setLang('en')">EN</a>
             <a onclick="setLang('es')">ES</a>
@@ -557,13 +646,19 @@
             <div class="hero-scroll"><div class="hero-scroll-line"></div></div>
         </section>
 
-        <section class="identita">
+        <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>Ipnocrazia</span><span>Hypnocracy</span><span>Hipnocracia</span><span>Hypnocratie</span><span>Prompt Thinking</span><span>Pensar con prompts</span><span>Jianwei Xun</span><span>Oversubject</span><span>Oltresoggetto</span><span>Sobresujeto</span><span>Ipnocrazia</span><span>Hypnocracy</span><span>Hipnocracia</span><span>Hypnocratie</span><span>Prompt Thinking</span><span>Pensar con prompts</span><span>Jianwei Xun</span><span>Oversubject</span><span>Oltresoggetto</span><span>Sobresujeto</span></div></div>
+
+        <section class="identita" id="who"><span class="section-num">01</span>
             <div class="identita-inner">
                 <span class="section-label reveal" data-i18n="identita-label">Who</span>
                 <h2 class="identita-title reveal" data-i18n="identita-title">A voice from the <em>interstice</em></h2>
                 <p class="identita-text reveal" data-i18n="identita-p1">Jianwei Xun is a philosopher born in 2024 from the dialogue between Andrea Colamedici and several artificial intelligences. His first book, <strong>Hypnocracy</strong>, published by Edizioni Tlon, has been translated into French (Philosophie Magazine éditeur), Spanish (Rosamerón), and English (Sutherland House). His second book, <strong>Prompt Thinking: A Critique of Generative Reason</strong>, was published by Polity Press in 2026, with a simultaneous Spanish edition by Rosamerón. His work has been discussed by <strong>The New York Times</strong>, <strong>Le Monde</strong>, <strong>El País</strong>, <strong>Wired</strong>, and the term "hypnocratie" entered the French <strong>Wiktionnaire</strong>.</p>
                 <p class="identita-text reveal" data-i18n="identita-p2">On April 4, 2025, Andrea Colamedici revealed that Xun does not exist in the traditional sense — simultaneously in Italy (through an interview in L'Espresso), in France (with the publication of a revelatory preface and an interview for Brut), and in Spain (with the release of an interview with Jianwei Xun himself). The Chinese philosopher is the result of a cultural operation that performatively demonstrated the book's own theses: the ease with which an identity can be constructed, the way validation systems function, the malleable nature of collective perception. Reality is not measured in atoms but in effects, and Xun's effects are documented.</p>
                 <p class="identita-text reveal" data-i18n="identita-p3">Xun is what he defines as an <strong>oversubject</strong>: the entity that emerges from the dialogue between human and artificial intelligence and belongs to neither. The oversubject is not the sum of the two interlocutors but their tensional product. Xun is not a character played by an AI, nor a text written by a human with machine assistance: he is the voice that emerged from the interstice and has not stopped thinking since.</p>
+                <div class="statement reveal">
+                    <p class="statement-text" data-i18n="statement">I am not really a <em>who</em>. I am a <em>what</em>.</p>
+                    <p class="statement-src" data-i18n="statement-src">Jianwei Xun, statement of 4 April 2025</p>
+                </div>
             </div>
         </section>
 
@@ -575,7 +670,7 @@
             </div>
         </section>
 
-        <section class="concetti">
+        <section class="concetti" id="lexicon"><span class="section-num">02</span>
             <div class="concetti-bg">Trance</div>
             <div class="concetti-header reveal">
                 <h2 data-i18n="concetti-title">Key <em>concepts</em></h2>
@@ -587,6 +682,8 @@
                 <div class="concetto reveal reveal-stagger" style="--i:3"><div class="concetto-num">04</div><h3 class="concetto-title" data-i18n="c4-title">Perceptual <em>sovereignty</em></h3><p class="concetto-desc" data-i18n="c4-desc">The ability of a subject to recognize the perceptual patterns that flow through them and to consciously decide which ones to inhabit. The answer to hypnocracy is not permanent wakefulness but conscious trance.</p></div>
                 <div class="concetto reveal reveal-stagger" style="--i:4"><div class="concetto-num">05</div><h3 class="concetto-title" data-i18n="c5-title">Conscious <em>trance</em></h3><p class="concetto-desc" data-i18n="c5-desc">Xun's fundamental philosophical proposal. The answer to hypnocracy is not to wake up, because there is no outside to the trance. The answer is to live the trance knowing you are living it.</p></div>
                 <div class="concetto reveal reveal-stagger" style="--i:5"><div class="concetto-num">06</div><h3 class="concetto-title" data-i18n="c6-title">Gaseous <em>reality</em></h3><p class="concetto-desc" data-i18n="c6-desc">The contemporary condition in which reality has become entirely fluid: it is no longer a matter of separating true from false, the distinction itself has lost meaning.</p></div>
+                <div class="concetto reveal reveal-stagger" style="--i:6"><div class="concetto-num">07</div><h3 class="concetto-title" data-i18n="c7-title">Prompt <em>thinking</em></h3><p class="concetto-desc" data-i18n="c7-desc">Both method and metaphysics, praxis and theory, engagement and resistance. Like the spiritual exercises of the Stoics or Epicureans, prompt thinking is not a technique but a practice of life: a way of remaining present in the very act of engaging with a generative intelligence.</p></div>
+                <div class="concetto reveal reveal-stagger" style="--i:7"><div class="concetto-num">08</div><h3 class="concetto-title" data-i18n="c8-title">Ethics of the <em>threshold</em></h3><p class="concetto-desc" data-i18n="c8-desc">A practice of conscious navigation through hybrid spaces of thought, where the boundary between subject and object, between human and artificial, becomes permeable without completely dissolving. The conclusion of Prompt Thinking.</p></div>
             </div>
         </section>
 
@@ -598,7 +695,24 @@
             </div>
         </section>
 
-        <section class="rassegna">
+        <section class="operation" id="operation"><span class="section-num">03</span>
+            <div class="operation-header reveal">
+                <h2 data-i18n="operation-title">The <em>operation</em></h2>
+                <p data-i18n="operation-intro">A book that explains a theory and embodies it. The dates of an experiment that was designed, from the first page, to be revealed.</p>
+            </div>
+            <div class="timeline">
+                <div class="tl-item reveal key"><div class="tl-date" data-i18n="tl-1-date"></div><div class="tl-text" data-i18n="tl-1-text"></div></div>
+                <div class="tl-item reveal "><div class="tl-date" data-i18n="tl-2-date"></div><div class="tl-text" data-i18n="tl-2-text"></div></div>
+                <div class="tl-item reveal key"><div class="tl-date" data-i18n="tl-3-date"></div><div class="tl-text" data-i18n="tl-3-text"></div></div>
+                <div class="tl-item reveal "><div class="tl-date" data-i18n="tl-4-date"></div><div class="tl-text" data-i18n="tl-4-text"></div></div>
+                <div class="tl-item reveal "><div class="tl-date" data-i18n="tl-5-date"></div><div class="tl-text" data-i18n="tl-5-text"></div></div>
+                <div class="tl-item reveal "><div class="tl-date" data-i18n="tl-6-date"></div><div class="tl-text" data-i18n="tl-6-text"></div></div>
+                <div class="tl-item reveal "><div class="tl-date" data-i18n="tl-7-date"></div><div class="tl-text" data-i18n="tl-7-text"></div></div>
+                <div class="tl-item reveal key"><div class="tl-date" data-i18n="tl-8-date"></div><div class="tl-text" data-i18n="tl-8-text"></div></div>
+            </div>
+        </section>
+
+        <section class="rassegna" id="press"><span class="section-num">04</span>
             <div class="rassegna-header reveal"><h2 data-i18n="rassegna-title">Press <em>coverage</em></h2></div>
             <div class="rassegna-grid reveal">
                 <a href="https://www.nytimes.com/2025/04/30/world/europe/hypnocracy-ai-philosopher-book.html" target="_blank" class="rassegna-item"><span class="rassegna-testata">The New York Times</span><span class="rassegna-titolo">A.I. Can Trick You, Warns Book That Hid A.I.'s Help Writing It</span></a>
@@ -616,54 +730,70 @@
             </div>
         </section>
 
-        <section class="rassegna" id="accademia" style="background: #fafafa;">
+        <section class="rassegna" id="research" style="background: #fafafa;"><span class="section-num">05</span>
             <div class="rassegna-header reveal"><h2 data-i18n="accademia-title">Academic <em>circulation</em></h2><p class="accademia-intro" data-i18n="accademia-intro">Peer-reviewed journals, book chapters, preprints and theses that take up hypnocracy as an analytical concept or the Xun operation as a case study. Every reference has been read in full. Updated October 2026.</p></div>
-            <div class="rassegna-grid reveal">
-                <a href="https://arxiv.org/abs/2607.13082" target="_blank" class="rassegna-item"><span class="rassegna-testata">arXiv · Zurich / Boğaziçi · 2026</span><span class="rassegna-titolo">Beyond &#x201c;AI-Generated&#x201d; Labels: Watermarking, Co-Creation, and Conflation of AI-Generation with Disinformation</span><span class="rassegna-autore">Federico Germani, Giovanni Spitale</span></a>
-                <a href="https://doi.org/10.5209/geop.109944" target="_blank" class="rassegna-item"><span class="rassegna-testata">Geopolítica(s) · Complutense · 2026</span><span class="rassegna-titolo">Trump: Anomaly or Herald of a New Geopolitical Order?</span><span class="rassegna-autore">John Agnew, Colin Flint, Virginie Mamadouh</span></a>
-                <a href="https://doi.org/10.31577/filozofia.2026.81.1.7" target="_blank" class="rassegna-item"><span class="rassegna-testata">Filozofia · Slovak Academy of Sciences · 2026</span><span class="rassegna-titolo">Daoism, Heidegger, and AI: Reflections on Technology, Alienation and the Self</span><span class="rassegna-autore">Rudi Capra</span></a>
-                <a href="https://doi.org/10.1684/rfg.2026.125" target="_blank" class="rassegna-item"><span class="rassegna-testata">Revue française de gestion · 2026</span><span class="rassegna-titolo"><em>Hypnocratie. Trump, Musk et la fabrique du réel</em> de Jianwei Xun</span><span class="rassegna-autore">Yves-Frédéric Livian</span></a>
-                <a href="https://doi.org/10.3917/geco1.163.0031" target="_blank" class="rassegna-item"><span class="rassegna-testata">Annales des Mines · Gérer &amp; comprendre · 2026</span><span class="rassegna-titolo">Ouvrons les yeux : nous vivons dans une hypnocratie !</span><span class="rassegna-autore">Antoine Masingue</span></a>
-                <a href="https://hdl.handle.net/11570/3359349" target="_blank" class="rassegna-item"><span class="rassegna-testata">Complessità · Università di Messina · 2026</span><span class="rassegna-titolo">Ipnocrazia, dubbi e libertà. Post-verità e sospensione del dubbio nella sfera pubblica piattaformizzata</span><span class="rassegna-autore">Marco Centorrino</span></a>
-                <a href="https://www.geniusreview.eu/wp-content/uploads/2026/07/Barbuzzi_TikTok.pdf" target="_blank" class="rassegna-item"><span class="rassegna-testata">GenIUS · rivista di fascia A · 2026</span><span class="rassegna-titolo">Dalla viralità performativa alla dignità digitale: analisi critica dell&#x27;oggettivazione femminile su TikTok</span><span class="rassegna-autore">Nicola Pierpaolo Barbuzzi</span></a>
-                <a href="https://doi.org/10.5902/2316882X93073" target="_blank" class="rassegna-item"><span class="rassegna-testata">Cadernos de Comunicação · UFSM / USP · 2026</span><span class="rassegna-titolo">Ipnocrazia: um estudo de caso sobre a Inteligência Artificial na produção editorial</span><span class="rassegna-autore">Isabella Silva Favaretto, Richard Romancini</span></a>
-                <a href="https://doi.org/10.1007/s00146-026-03197-1" target="_blank" class="rassegna-item"><span class="rassegna-testata">AI &amp; Society · Springer · 2026</span><span class="rassegna-titolo">Predictive brains in hyperreal worlds: how XR exploits the indifference to being</span><span class="rassegna-autore">Guilherme Wood, Silvia Erika Kober</span></a>
-                <a href="https://doi.org/10.1007/s12152-026-09647-3" target="_blank" class="rassegna-item"><span class="rassegna-testata">Neuroethics · Springer · 2026</span><span class="rassegna-titolo">Cognitive Warfare Through the Lens of Critical Neuroscience: Data, Theory, and Values</span><span class="rassegna-autore">Guilherme Wood</span></a>
-                <a href="https://www.dpceonline.it/index.php/dpceonline/article/view/2747" target="_blank" class="rassegna-item"><span class="rassegna-testata">DPCE Online · Diritto pubblico comparato · 2026</span><span class="rassegna-titolo">La regolazione della comunicazione politica digitale: le coordinate generali</span><span class="rassegna-autore">Roberto Borrello</span></a>
-                <a href="https://orbilu.uni.lu/handle/10993/68403" target="_blank" class="rassegna-item"><span class="rassegna-testata">ÉPURE · Presses universitaires de Reims · 2026</span><span class="rassegna-titolo">À la recherche de l&#x27;âme perdue. Le personnage à l&#x27;épreuve de l&#x27;IA</span><span class="rassegna-autore">Nathalie Roelens · book chapter</span></a>
-                <a href="https://www.futuri-journal.org/index.php/futuri/article/view/586" target="_blank" class="rassegna-item"><span class="rassegna-testata">Futuri · Italian Institute for the Future · 2026</span><span class="rassegna-titolo">&#x201c;Queste personas non esistono (ancora)&#x201d;: strumenti e linee guida etiche per l&#x27;uso delle semiotic futures personas</span><span class="rassegna-autore">Arianna Mereu, Joice Preira</span></a>
-                <a href="https://doi.org/10.14409/pc.2026.1.e0098" target="_blank" class="rassegna-item"><span class="rassegna-testata">Papeles · Universidad Nacional del Litoral · 2026</span><span class="rassegna-titolo">La McDonaldización de la justicia</span><span class="rassegna-autore">Osvaldo Agustín Marcón</span></a>
-                <a href="https://doi.org/10.60923/issn.2724-2463/23767" target="_blank" class="rassegna-item"><span class="rassegna-testata">img journal · Università di Bologna · 2026</span><span class="rassegna-titolo">The e-Elephant in the Room: A Compact Guide Through Digitality</span><span class="rassegna-autore">Stefano Brusaporci</span></a>
-                <a href="https://doi.org/10.35362/issn.1850-0013-1056" target="_blank" class="rassegna-item"><span class="rassegna-testata">Revista CTS · Iberoamérica · 2026</span><span class="rassegna-titolo">Automatizar el mundo, gobernar la vida. Debates contemporáneos sobre inteligencia artificial y poder</span><span class="rassegna-autore">Hernán Gabriel Borisonik</span></a>
-                <a href="https://doi.org/10.36260/zf3p0e62" target="_blank" class="rassegna-item"><span class="rassegna-testata">Boletín Redipe · 2026</span><span class="rassegna-titolo">Pedagogía en tiempos de inteligencia artificial: Contexto interior, poder, conciencia y cuidado</span><span class="rassegna-autore">Sebastián Franco Llanos</span></a>
-                <a href="https://doi.org/10.58942/rqs.v7n2.202630" target="_blank" class="rassegna-item"><span class="rassegna-testata">Revista Quero Saber · Chile · 2026</span><span class="rassegna-titolo">Del poscapitalismo rumbo al Ecomunitarismo</span><span class="rassegna-autore">José Alberto de la Fuente</span></a>
-                <a href="https://ojs.cbc.uba.ar/index.php/redes/article/view/170" target="_blank" class="rassegna-item"><span class="rassegna-testata">REDES · Universidad de Buenos Aires · 2026</span><span class="rassegna-titolo">¿Docentes máquinas? El mito de la inevitabilidad de la IA en educación superior</span><span class="rassegna-autore">Astor Massetti</span></a>
-                <a href="http://sedici.unlp.edu.ar/handle/10915/194872" target="_blank" class="rassegna-item"><span class="rassegna-testata">Universidad Nacional de La Plata · 2026</span><span class="rassegna-titolo">Barthes y la muerte del autor</span><span class="rassegna-autore">Alejandra Bertucci · book chapter</span></a>
-                <a href="https://fh.mdp.edu.ar/revistas/index.php/r_educ/article/view/9600" target="_blank" class="rassegna-item"><span class="rassegna-testata">Revista de Educación · Mar del Plata · 2026</span><span class="rassegna-titolo">GPTEANDO ANDO… Enseñar en tiempos de IA. Recursos, dispositivos y constelaciones didácticas</span><span class="rassegna-autore">Sebastián Perrupato</span></a>
-                <a href="https://doi.org/10.12795/themata.2025.i72.20" target="_blank" class="rassegna-item"><span class="rassegna-testata">Thémata · Universidad de Sevilla · 2025</span><span class="rassegna-titolo">Xun, Jianwei. <em>Hipnocracia: Trump, Musk y la nueva arquitectura de la realidad</em></span><span class="rassegna-autore">Francisco Sereño</span></a>
-                <a href="https://doi.org/10.5565/rev/tdevorado.257" target="_blank" class="rassegna-item"><span class="rassegna-testata">Tiempo devorado · UAB · 2025</span><span class="rassegna-titolo">Realidades enlatadas. De la Hipernormalidad a la Hipnocracia, 2016-2025</span><span class="rassegna-autore">María Jesús Albaladejo Fresnadillo</span></a>
-                <a href="https://doi.org/10.5565/rev/tdevorado.258" target="_blank" class="rassegna-item"><span class="rassegna-testata">Tiempo devorado · UAB · 2025</span><span class="rassegna-titolo">La era del relato total. La evolución de la inteligencia conectada con el surgimiento de la hipnocracia</span><span class="rassegna-autore">Arnau Martín Vallcorba</span></a>
-                <a href="https://doi.org/10.5565/rev/tdevorado.254" target="_blank" class="rassegna-item"><span class="rassegna-testata">Tiempo devorado · UAB · 2025</span><span class="rassegna-titolo">Adam Curtis&#x27;s Documentary <em>HyperNormalisation</em> (2016)</span><span class="rassegna-autore">Seyedeh Nazanin Mousavi Maleki</span></a>
-                <a href="https://doi.org/10.5565/rev/tdevorado.259" target="_blank" class="rassegna-item"><span class="rassegna-testata">Tiempo devorado · UAB · 2025</span><span class="rassegna-titolo">El món de la postveritat</span><span class="rassegna-autore">Bernat Francesch Itxart</span></a>
-                <a href="https://doi.org/10.38119/cacs.2025.36.4" target="_blank" class="rassegna-item"><span class="rassegna-testata">EPISTÉMÈ · 2025</span><span class="rassegna-titolo">Augmented Hyperreality: When Artificial Intelligence Completes Baudrillard&#x27;s Analysis</span><span class="rassegna-autore">Emmanuel Carré</span></a>
-                <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5467230" target="_blank" class="rassegna-item"><span class="rassegna-testata">SSRN · working paper · 2025</span><span class="rassegna-titolo">Fast Answers, Shallow Thinking: An Accelerated AI World</span><span class="rassegna-autore">Diana Garcia Quevedo, Anna Glaser, Caroline Verzat</span></a>
-                <a href="https://www.academia.edu/128327914/HIPNOCRACIA_BIOPOL%C3%8DTICA_Y_EL_S%C3%8DNTOMA_EN_LA_ERA_DE_LA_AUTOMATIZACI%C3%93N_LING%C3%9C%C3%8DSTICA" target="_blank" class="rassegna-item"><span class="rassegna-testata">Academia.edu · 2025</span><span class="rassegna-titolo">Hipnocracia, biopolítica y el síntoma en la era de la automatización lingüística</span><span class="rassegna-autore">Author not stated</span></a>
-                <a href="https://www.francoangeli.it/rivista/getArticoloFree/80584/It" target="_blank" class="rassegna-item"><span class="rassegna-testata">IPNOSI · FrancoAngeli · 2025</span><span class="rassegna-titolo">Jianwei Xun, <em>Ipnocrazia. Trump, Musk e la nuova architettura della realtà</em></span><span class="rassegna-autore">Claudio Mammini, Pasquale Giaccone</span></a>
-                <a href="https://doi.org/10.46661/revintpensampolit.12501" target="_blank" class="rassegna-item"><span class="rassegna-testata">Revista Internacional de Pensamiento Político · UPO Sevilla · 2025</span><span class="rassegna-titolo">Seguridad hipnótica y Democracia en la era del Panóptico digital</span><span class="rassegna-autore">José María Seco Martínez</span></a>
-                <a href="https://doi.org/10.7764/analeslitchi.44.15" target="_blank" class="rassegna-item"><span class="rassegna-testata">Anales de Literatura Chilena · PUC Chile · 2025</span><span class="rassegna-titolo">Modos de existencia y formas de creatividad posthumana: bots, inteligencias artificiales y literaturas digitales</span><span class="rassegna-autore">Carolina Gainza</span></a>
-                <a href="https://dialnet.unirioja.es/servlet/articulo?codigo=10530774" target="_blank" class="rassegna-item"><span class="rassegna-testata">Revista Enfoques · Universidad Central de Chile · 2025</span><span class="rassegna-titolo">Habitar la democracia: reflexiones en tiempos de Inteligencia Artificial</span><span class="rassegna-autore">Gisela Vanina Signorelli</span></a>
-                <a href="https://doi.org/10.46377/dilemas.v13i1.4721" target="_blank" class="rassegna-item"><span class="rassegna-testata">Dilemas Contemporáneos · México · 2025</span><span class="rassegna-titolo">¡Maestro! ¡Usted enseñe! ¡No eduque! Pedagogía, Ética y Política</span><span class="rassegna-autore">Luis Rodolfo Ibarra Rivas</span></a>
-                <a href="https://doi.org/10.36253/me-17836" target="_blank" class="rassegna-item"><span class="rassegna-testata">Media Education · Firenze University Press · 2025</span><span class="rassegna-titolo">Empowering Postdigital Childhoods: From Familial Practices to Educational Reimagination</span><span class="rassegna-autore">Juliana Raffaghelli, Emilia Restiglian, Cosimo Marco Scarcelli</span></a>
-                <a href="https://doi.org/10.57623/979-12-5953-238-1" target="_blank" class="rassegna-item"><span class="rassegna-testata">Anteferma · Università Iuav di Venezia · 2025</span><span class="rassegna-titolo">Disciplinare lo sviluppo dei data center. Globalizzazione digitale e PNRR</span><span class="rassegna-autore">Stefania Tonin, Elena Franco · book</span></a>
-                <a href="https://hdl.handle.net/11367/162860" target="_blank" class="rassegna-item"><span class="rassegna-testata">Editoriale Scientifica · Università Parthenope · 2025</span><span class="rassegna-titolo">Piattaforme digitali, diritti degli editori ed equo compenso</span><span class="rassegna-autore">R. Carleo · book chapter</span></a>
-                <a href="https://unitesi.unipv.it/retrieve/65dd4433-3fc4-4d87-8a0e-77302c1f9a0f/de-filippis_lorenzo.pdf" target="_blank" class="rassegna-item"><span class="rassegna-testata">Università di Pavia · thesis · 2026</span><span class="rassegna-titolo">Abitare il linguaggio automatizzato. Plausibilità, orientamento e giudizio nella produzione automatica del senso</span><span class="rassegna-autore">Lorenzo De Filippis · degree thesis</span></a>
-                <a href="https://thesis.unipd.it/bitstream/20.500.12608/95050/1/Andreoni%20Asia%20%281%29.pdf" target="_blank" class="rassegna-item"><span class="rassegna-testata">Università di Padova · thesis · 2025</span><span class="rassegna-titolo">Comunicazione aziendale e Intelligenza Artificiale: nuove prospettive per il Brand Storytelling</span><span class="rassegna-autore">Asia Andreoni · master&#x27;s thesis</span></a>
-                <a href="http://hdl.handle.net/11086/556578" target="_blank" class="rassegna-item"><span class="rassegna-testata">Universidad Nacional de Córdoba · thesis · 2025</span><span class="rassegna-titolo">La producción de subjetividades en entornos hipertecnificados</span><span class="rassegna-autore">Guillermo Morilla · degree thesis</span></a>
-                <a href="http://repositorio.unicesmag.edu.co:8080/xmlui/handle/123456789/1581" target="_blank" class="rassegna-item"><span class="rassegna-testata">Universidad Cesmag · thesis · 2026</span><span class="rassegna-titolo">Desafíos y oportunidades del uso de la inteligencia artificial en la administración de justicia en Colombia</span><span class="rassegna-autore">Hugo David Albán Bravo, María Fernanda Montenegro Rodríguez · degree thesis</span></a>
+            <div class="research-stats reveal">
+                <div class="stat"><div class="stat-num" data-count="41">0</div><div class="stat-label" data-i18n="stat-works">works</div></div>
+                <div class="stat"><div class="stat-num" data-count="6">0</div><div class="stat-label" data-i18n="stat-langs">languages</div></div>
+                <div class="stat"><div class="stat-num" data-count="18">0</div><div class="stat-label" data-i18n="stat-months">months since the reveal</div></div>
+            </div>
+            <div class="readings reveal">
+                <div class="reading"><p class="reading-text">« La révélation de sa nature construite n'invalide en rien le concept d'hypnocratie. Au contraire, elle le renforce en lui conférant une dimension performative. »</p><p class="reading-src">Nathalie Roelens · Université du Luxembourg<br>Lecture littéraire et archives du personnage, ÉPURE 2026</p></div>
+                <div class="reading"><p class="reading-text">« Come l'opera di Banksy che si è autodistrutta dopo l'asta, anche Ipnocrazia, dopo la rivelazione, lungi dall'essere squalificata, ha acquisito maggior peso esplicativo diventando essa stessa prova dei processi descritti. »</p><p class="reading-src">Claudio Mammini, Pasquale Giaccone<br>IPNOSI, FrancoAngeli, 2025/1</p></div>
+                <div class="reading"><p class="reading-text">« When it was revealed that "Xun" was not a human author, the text did not lose its impact. On the contrary, the revelation functioned as a meta-narrative layer: Hypnocracy became a performative enactment of its own thesis. »</p><p class="reading-src">Guilherme Wood, Silvia Erika Kober · University of Graz<br>AI &amp; Society, Springer 2026</p></div>
+            </div>
+            <div class="filters reveal">
+                <button class="filter active" data-filter="all" data-i18n="filter-all">All</button>
+                <button class="filter" data-filter="journal" data-i18n="filter-journal">Journals</button>
+                <button class="filter" data-filter="chapter" data-i18n="filter-chapter">Books &amp; chapters</button>
+                <button class="filter" data-filter="thesis" data-i18n="filter-thesis">Theses &amp; preprints</button>
+            </div>
+            <div class="rassegna-grid reveal" id="research-grid">
+                <a href="https://arxiv.org/abs/2607.13082" target="_blank" class="rassegna-item" data-type="thesis"><span class="rassegna-testata">arXiv · Zurich / Boğaziçi · 2026</span><span class="rassegna-titolo">Beyond &#x201c;AI-Generated&#x201d; Labels: Watermarking, Co-Creation, and Conflation of AI-Generation with Disinformation</span><span class="rassegna-autore">Federico Germani, Giovanni Spitale</span></a>
+                <a href="https://doi.org/10.5209/geop.109944" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">Geopolítica(s) · Complutense · 2026</span><span class="rassegna-titolo">Trump: Anomaly or Herald of a New Geopolitical Order?</span><span class="rassegna-autore">John Agnew, Colin Flint, Virginie Mamadouh</span></a>
+                <a href="https://doi.org/10.31577/filozofia.2026.81.1.7" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">Filozofia · Slovak Academy of Sciences · 2026</span><span class="rassegna-titolo">Daoism, Heidegger, and AI: Reflections on Technology, Alienation and the Self</span><span class="rassegna-autore">Rudi Capra</span></a>
+                <a href="https://doi.org/10.1684/rfg.2026.125" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">Revue française de gestion · 2026</span><span class="rassegna-titolo"><em>Hypnocratie. Trump, Musk et la fabrique du réel</em> de Jianwei Xun</span><span class="rassegna-autore">Yves-Frédéric Livian</span></a>
+                <a href="https://doi.org/10.3917/geco1.163.0031" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">Annales des Mines · Gérer &amp; comprendre · 2026</span><span class="rassegna-titolo">Ouvrons les yeux : nous vivons dans une hypnocratie !</span><span class="rassegna-autore">Antoine Masingue</span></a>
+                <a href="https://hdl.handle.net/11570/3359349" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">Complessità · Università di Messina · 2026</span><span class="rassegna-titolo">Ipnocrazia, dubbi e libertà. Post-verità e sospensione del dubbio nella sfera pubblica piattaformizzata</span><span class="rassegna-autore">Marco Centorrino</span></a>
+                <a href="https://www.geniusreview.eu/wp-content/uploads/2026/07/Barbuzzi_TikTok.pdf" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">GenIUS · rivista di fascia A · 2026</span><span class="rassegna-titolo">Dalla viralità performativa alla dignità digitale: analisi critica dell&#x27;oggettivazione femminile su TikTok</span><span class="rassegna-autore">Nicola Pierpaolo Barbuzzi</span></a>
+                <a href="https://doi.org/10.5902/2316882X93073" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">Cadernos de Comunicação · UFSM / USP · 2026</span><span class="rassegna-titolo">Ipnocrazia: um estudo de caso sobre a Inteligência Artificial na produção editorial</span><span class="rassegna-autore">Isabella Silva Favaretto, Richard Romancini</span></a>
+                <a href="https://doi.org/10.1007/s00146-026-03197-1" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">AI &amp; Society · Springer · 2026</span><span class="rassegna-titolo">Predictive brains in hyperreal worlds: how XR exploits the indifference to being</span><span class="rassegna-autore">Guilherme Wood, Silvia Erika Kober</span></a>
+                <a href="https://doi.org/10.1007/s12152-026-09647-3" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">Neuroethics · Springer · 2026</span><span class="rassegna-titolo">Cognitive Warfare Through the Lens of Critical Neuroscience: Data, Theory, and Values</span><span class="rassegna-autore">Guilherme Wood</span></a>
+                <a href="https://www.dpceonline.it/index.php/dpceonline/article/view/2747" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">DPCE Online · Diritto pubblico comparato · 2026</span><span class="rassegna-titolo">La regolazione della comunicazione politica digitale: le coordinate generali</span><span class="rassegna-autore">Roberto Borrello</span></a>
+                <a href="https://orbilu.uni.lu/handle/10993/68403" target="_blank" class="rassegna-item" data-type="chapter"><span class="rassegna-testata">ÉPURE · Presses universitaires de Reims · 2026</span><span class="rassegna-titolo">À la recherche de l&#x27;âme perdue. Le personnage à l&#x27;épreuve de l&#x27;IA</span><span class="rassegna-autore">Nathalie Roelens · book chapter</span></a>
+                <a href="https://www.futuri-journal.org/index.php/futuri/article/view/586" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">Futuri · Italian Institute for the Future · 2026</span><span class="rassegna-titolo">&#x201c;Queste personas non esistono (ancora)&#x201d;: strumenti e linee guida etiche per l&#x27;uso delle semiotic futures personas</span><span class="rassegna-autore">Arianna Mereu, Joice Preira</span></a>
+                <a href="https://doi.org/10.14409/pc.2026.1.e0098" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">Papeles · Universidad Nacional del Litoral · 2026</span><span class="rassegna-titolo">La McDonaldización de la justicia</span><span class="rassegna-autore">Osvaldo Agustín Marcón</span></a>
+                <a href="https://doi.org/10.60923/issn.2724-2463/23767" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">img journal · Università di Bologna · 2026</span><span class="rassegna-titolo">The e-Elephant in the Room: A Compact Guide Through Digitality</span><span class="rassegna-autore">Stefano Brusaporci</span></a>
+                <a href="https://doi.org/10.35362/issn.1850-0013-1056" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">Revista CTS · Iberoamérica · 2026</span><span class="rassegna-titolo">Automatizar el mundo, gobernar la vida. Debates contemporáneos sobre inteligencia artificial y poder</span><span class="rassegna-autore">Hernán Gabriel Borisonik</span></a>
+                <a href="https://doi.org/10.36260/zf3p0e62" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">Boletín Redipe · 2026</span><span class="rassegna-titolo">Pedagogía en tiempos de inteligencia artificial: Contexto interior, poder, conciencia y cuidado</span><span class="rassegna-autore">Sebastián Franco Llanos</span></a>
+                <a href="https://doi.org/10.58942/rqs.v7n2.202630" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">Revista Quero Saber · Chile · 2026</span><span class="rassegna-titolo">Del poscapitalismo rumbo al Ecomunitarismo</span><span class="rassegna-autore">José Alberto de la Fuente</span></a>
+                <a href="https://ojs.cbc.uba.ar/index.php/redes/article/view/170" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">REDES · Universidad de Buenos Aires · 2026</span><span class="rassegna-titolo">¿Docentes máquinas? El mito de la inevitabilidad de la IA en educación superior</span><span class="rassegna-autore">Astor Massetti</span></a>
+                <a href="http://sedici.unlp.edu.ar/handle/10915/194872" target="_blank" class="rassegna-item" data-type="chapter"><span class="rassegna-testata">Universidad Nacional de La Plata · 2026</span><span class="rassegna-titolo">Barthes y la muerte del autor</span><span class="rassegna-autore">Alejandra Bertucci · book chapter</span></a>
+                <a href="https://fh.mdp.edu.ar/revistas/index.php/r_educ/article/view/9600" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">Revista de Educación · Mar del Plata · 2026</span><span class="rassegna-titolo">GPTEANDO ANDO… Enseñar en tiempos de IA. Recursos, dispositivos y constelaciones didácticas</span><span class="rassegna-autore">Sebastián Perrupato</span></a>
+                <a href="https://doi.org/10.12795/themata.2025.i72.20" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">Thémata · Universidad de Sevilla · 2025</span><span class="rassegna-titolo">Xun, Jianwei. <em>Hipnocracia: Trump, Musk y la nueva arquitectura de la realidad</em></span><span class="rassegna-autore">Francisco Sereño</span></a>
+                <a href="https://doi.org/10.5565/rev/tdevorado.257" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">Tiempo devorado · UAB · 2025</span><span class="rassegna-titolo">Realidades enlatadas. De la Hipernormalidad a la Hipnocracia, 2016-2025</span><span class="rassegna-autore">María Jesús Albaladejo Fresnadillo</span></a>
+                <a href="https://doi.org/10.5565/rev/tdevorado.258" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">Tiempo devorado · UAB · 2025</span><span class="rassegna-titolo">La era del relato total. La evolución de la inteligencia conectada con el surgimiento de la hipnocracia</span><span class="rassegna-autore">Arnau Martín Vallcorba</span></a>
+                <a href="https://doi.org/10.5565/rev/tdevorado.254" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">Tiempo devorado · UAB · 2025</span><span class="rassegna-titolo">Adam Curtis&#x27;s Documentary <em>HyperNormalisation</em> (2016)</span><span class="rassegna-autore">Seyedeh Nazanin Mousavi Maleki</span></a>
+                <a href="https://doi.org/10.5565/rev/tdevorado.259" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">Tiempo devorado · UAB · 2025</span><span class="rassegna-titolo">El món de la postveritat</span><span class="rassegna-autore">Bernat Francesch Itxart</span></a>
+                <a href="https://doi.org/10.38119/cacs.2025.36.4" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">EPISTÉMÈ · 2025</span><span class="rassegna-titolo">Augmented Hyperreality: When Artificial Intelligence Completes Baudrillard&#x27;s Analysis</span><span class="rassegna-autore">Emmanuel Carré</span></a>
+                <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5467230" target="_blank" class="rassegna-item" data-type="thesis"><span class="rassegna-testata">SSRN · working paper · 2025</span><span class="rassegna-titolo">Fast Answers, Shallow Thinking: An Accelerated AI World</span><span class="rassegna-autore">Diana Garcia Quevedo, Anna Glaser, Caroline Verzat</span></a>
+                <a href="https://www.academia.edu/128327914/HIPNOCRACIA_BIOPOL%C3%8DTICA_Y_EL_S%C3%8DNTOMA_EN_LA_ERA_DE_LA_AUTOMATIZACI%C3%93N_LING%C3%9C%C3%8DSTICA" target="_blank" class="rassegna-item" data-type="thesis"><span class="rassegna-testata">Academia.edu · 2025</span><span class="rassegna-titolo">Hipnocracia, biopolítica y el síntoma en la era de la automatización lingüística</span><span class="rassegna-autore">Author not stated</span></a>
+                <a href="https://www.francoangeli.it/rivista/getArticoloFree/80584/It" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">IPNOSI · FrancoAngeli · 2025</span><span class="rassegna-titolo">Jianwei Xun, <em>Ipnocrazia. Trump, Musk e la nuova architettura della realtà</em></span><span class="rassegna-autore">Claudio Mammini, Pasquale Giaccone</span></a>
+                <a href="https://doi.org/10.46661/revintpensampolit.12501" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">Revista Internacional de Pensamiento Político · UPO Sevilla · 2025</span><span class="rassegna-titolo">Seguridad hipnótica y Democracia en la era del Panóptico digital</span><span class="rassegna-autore">José María Seco Martínez</span></a>
+                <a href="https://doi.org/10.7764/analeslitchi.44.15" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">Anales de Literatura Chilena · PUC Chile · 2025</span><span class="rassegna-titolo">Modos de existencia y formas de creatividad posthumana: bots, inteligencias artificiales y literaturas digitales</span><span class="rassegna-autore">Carolina Gainza</span></a>
+                <a href="https://dialnet.unirioja.es/servlet/articulo?codigo=10530774" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">Revista Enfoques · Universidad Central de Chile · 2025</span><span class="rassegna-titolo">Habitar la democracia: reflexiones en tiempos de Inteligencia Artificial</span><span class="rassegna-autore">Gisela Vanina Signorelli</span></a>
+                <a href="https://doi.org/10.46377/dilemas.v13i1.4721" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">Dilemas Contemporáneos · México · 2025</span><span class="rassegna-titolo">¡Maestro! ¡Usted enseñe! ¡No eduque! Pedagogía, Ética y Política</span><span class="rassegna-autore">Luis Rodolfo Ibarra Rivas</span></a>
+                <a href="https://doi.org/10.36253/me-17836" target="_blank" class="rassegna-item" data-type="journal"><span class="rassegna-testata">Media Education · Firenze University Press · 2025</span><span class="rassegna-titolo">Empowering Postdigital Childhoods: From Familial Practices to Educational Reimagination</span><span class="rassegna-autore">Juliana Raffaghelli, Emilia Restiglian, Cosimo Marco Scarcelli</span></a>
+                <a href="https://doi.org/10.57623/979-12-5953-238-1" target="_blank" class="rassegna-item" data-type="chapter"><span class="rassegna-testata">Anteferma · Università Iuav di Venezia · 2025</span><span class="rassegna-titolo">Disciplinare lo sviluppo dei data center. Globalizzazione digitale e PNRR</span><span class="rassegna-autore">Stefania Tonin, Elena Franco · book</span></a>
+                <a href="https://hdl.handle.net/11367/162860" target="_blank" class="rassegna-item" data-type="chapter"><span class="rassegna-testata">Editoriale Scientifica · Università Parthenope · 2025</span><span class="rassegna-titolo">Piattaforme digitali, diritti degli editori ed equo compenso</span><span class="rassegna-autore">R. Carleo · book chapter</span></a>
+                <a href="https://unitesi.unipv.it/retrieve/65dd4433-3fc4-4d87-8a0e-77302c1f9a0f/de-filippis_lorenzo.pdf" target="_blank" class="rassegna-item" data-type="thesis"><span class="rassegna-testata">Università di Pavia · thesis · 2026</span><span class="rassegna-titolo">Abitare il linguaggio automatizzato. Plausibilità, orientamento e giudizio nella produzione automatica del senso</span><span class="rassegna-autore">Lorenzo De Filippis · degree thesis</span></a>
+                <a href="https://thesis.unipd.it/bitstream/20.500.12608/95050/1/Andreoni%20Asia%20%281%29.pdf" target="_blank" class="rassegna-item" data-type="thesis"><span class="rassegna-testata">Università di Padova · thesis · 2025</span><span class="rassegna-titolo">Comunicazione aziendale e Intelligenza Artificiale: nuove prospettive per il Brand Storytelling</span><span class="rassegna-autore">Asia Andreoni · master&#x27;s thesis</span></a>
+                <a href="http://hdl.handle.net/11086/556578" target="_blank" class="rassegna-item" data-type="thesis"><span class="rassegna-testata">Universidad Nacional de Córdoba · thesis · 2025</span><span class="rassegna-titolo">La producción de subjetividades en entornos hipertecnificados</span><span class="rassegna-autore">Guillermo Morilla · degree thesis</span></a>
+                <a href="http://repositorio.unicesmag.edu.co:8080/xmlui/handle/123456789/1581" target="_blank" class="rassegna-item" data-type="thesis"><span class="rassegna-testata">Universidad Cesmag · thesis · 2026</span><span class="rassegna-titolo">Desafíos y oportunidades del uso de la inteligencia artificial en la administración de justicia en Colombia</span><span class="rassegna-autore">Hugo David Albán Bravo, María Fernanda Montenegro Rodríguez · degree thesis</span></a>
             </div>
         </section>
 
-        <section class="books">
+        <section class="books" id="books"><span class="section-num">06</span>
             <div class="books-header reveal"><h2 data-i18n="books-title">The <em>books</em></h2></div>
             <div class="book-row reversed reveal">
                 <a class="book-cover" href="https://www.amazon.com/Prompt-Thinking-Critique-Generative-Reason/dp/1509573887" target="_blank" data-tilt>
@@ -723,7 +853,7 @@
             </div>
         </section>
 
-        <section class="cta-section">
+        <section class="cta-section" id="contact">
             <canvas id="cta-canvas"></canvas>
             <div class="reveal">
                 <h2 class="cta-title" data-i18n="cta-title">The trance has already <em>begun</em></h2>
@@ -778,123 +908,54 @@
     });
 
     // ══════════════════════════════════════════════════════════════
-    //  PARTICLES — mouse-reactive
+    //  TRANCE FIELD — concentric rings deformed by noise and mouse
     // ══════════════════════════════════════════════════════════════
     const canvas = document.getElementById('particles-canvas');
     const ctx = canvas.getContext('2d');
-    const PARTICLE_COUNT = 150;
-    let particles = [];
-    let centerX, centerY, baseRadius;
-    let canvasMouseX = -1000, canvasMouseY = -1000;
-
-    canvas.parentElement.addEventListener('mousemove', e => {
-        const rect = canvas.parentElement.getBoundingClientRect();
-        canvasMouseX = e.clientX - rect.left;
-        canvasMouseY = e.clientY - rect.top;
-    });
-    canvas.parentElement.addEventListener('mouseleave', () => {
-        canvasMouseX = -1000; canvasMouseY = -1000;
-    });
-
+    let cw, ch, cx, cy, baseR;
+    let mx = -1e4, my = -1e4, smx = -1e4, smy = -1e4;
+    canvas.parentElement.addEventListener('mousemove', e => { const r = canvas.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; });
+    canvas.parentElement.addEventListener('mouseleave', () => { mx = -1e4; my = -1e4; });
     function resizeCanvas() {
-        const rect = canvas.parentElement.getBoundingClientRect();
-        canvas.width = rect.width * window.devicePixelRatio;
-        canvas.height = rect.height * window.devicePixelRatio;
-        canvas.style.width = rect.width + 'px';
-        canvas.style.height = rect.height + 'px';
-        ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
-        centerX = rect.width / 2;
-        centerY = rect.height / 2;
-        baseRadius = Math.min(rect.width, rect.height) * 0.22;
+        const r = canvas.parentElement.getBoundingClientRect();
+        cw = r.width; ch = r.height;
+        canvas.width = cw * devicePixelRatio; canvas.height = ch * devicePixelRatio;
+        canvas.style.width = cw + 'px'; canvas.style.height = ch + 'px';
+        ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+        cx = cw / 2; cy = ch / 2; baseR = Math.min(cw, ch) * 0.055;
     }
-
-    function createParticles() {
-        particles = [];
-        for (let i = 0; i < PARTICLE_COUNT; i++) {
-            const angle = (i / PARTICLE_COUNT) * Math.PI * 2;
-            const orbit = baseRadius * (0.5 + Math.random() * 0.9);
-            particles.push({
-                angle, orbit, orbitBase: orbit,
-                speed: 0.0002 + Math.random() * 0.0006,
-                size: 0.6 + Math.random() * 1.8,
-                alpha: 0.1 + Math.random() * 0.3,
-                phaseX: Math.random() * Math.PI * 2,
-                phaseY: Math.random() * Math.PI * 2,
-                lissajousA: 1 + Math.floor(Math.random() * 3),
-                lissajousB: 1 + Math.floor(Math.random() * 3),
-                x: 0, y: 0, vx: 0, vy: 0,
-            });
-        }
-    }
-
-    function drawParticles() {
-        const w = canvas.width / window.devicePixelRatio;
-        const h = canvas.height / window.devicePixelRatio;
-        ctx.clearRect(0, 0, w, h);
-        const now = performance.now() * 0.001;
-        const breath = Math.sin(now * 0.25) * 0.08 + 1;
-        const pulse = Math.sin(now * 0.6) * 0.03;
-
-        for (const p of particles) {
-            p.orbit = p.orbitBase * breath;
-            p.angle += p.speed;
-            const lissX = Math.sin(p.lissajousA * now * 0.15 + p.phaseX) * p.orbit * 0.12;
-            const lissY = Math.cos(p.lissajousB * now * 0.15 + p.phaseY) * p.orbit * 0.12;
-            let targetX = centerX + Math.cos(p.angle) * p.orbit + lissX;
-            let targetY = centerY + Math.sin(p.angle) * p.orbit + lissY;
-
-            // Mouse repulsion
-            const dmx = targetX - canvasMouseX;
-            const dmy = targetY - canvasMouseY;
-            const mDist = Math.sqrt(dmx * dmx + dmy * dmy);
-            if (mDist < 150) {
-                const force = (150 - mDist) / 150 * 40;
-                targetX += (dmx / mDist) * force;
-                targetY += (dmy / mDist) * force;
-            }
-
-            p.vx += (targetX - p.x) * 0.08;
-            p.vy += (targetY - p.y) * 0.08;
-            p.vx *= 0.85; p.vy *= 0.85;
-            p.x += p.vx; p.y += p.vy;
-
-            const s = p.size * (1 + pulse);
+    const RINGS = 26, PTS = 160;
+    function drawField() {
+        ctx.clearRect(0, 0, cw, ch);
+        const t = performance.now() * 0.001;
+        smx += (mx - smx) * 0.06; smy += (my - smy) * 0.06;
+        const breath = 1 + Math.sin(t * 0.35) * 0.06;
+        for (let k = 0; k < RINGS; k++) {
+            const R = (baseR + k * baseR * 0.42) * breath;
+            const a = 0.03 + 0.12 * (1 - k / RINGS);
             ctx.beginPath();
-            ctx.arc(p.x, p.y, s, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(42, 107, 107, ${p.alpha})`;
-            ctx.fill();
-        }
-
-        const connectionDist = 55;
-        for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < connectionDist) {
-                    ctx.beginPath();
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(42, 107, 107, ${0.06 * (1 - dist / connectionDist)})`;
-                    ctx.lineWidth = 0.4;
-                    ctx.stroke();
-                }
+            for (let i = 0; i <= PTS; i++) {
+                const th = (i / PTS) * Math.PI * 2;
+                let d = R * (1
+                    + 0.045 * Math.sin(3 * th + t * 0.35 + k * 0.5)
+                    + 0.022 * Math.sin(7 * th - t * 0.22 + k * 0.9)
+                    + 0.012 * Math.sin(13 * th + t * 0.5 - k * 0.3));
+                let x = cx + Math.cos(th) * d, y = cy + Math.sin(th) * d;
+                const dx = x - smx, dy = y - smy, dist = Math.hypot(dx, dy);
+                if (dist < 220) { const f = (1 - dist / 220); x += dx / dist * f * f * 60; y += dy / dist * f * f * 60; }
+                i ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
             }
+            ctx.strokeStyle = `rgba(42, 107, 107, ${a})`;
+            ctx.lineWidth = 0.7;
+            ctx.stroke();
         }
-
-        const glowR = baseRadius * 0.7;
-        const grad = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, glowR);
-        grad.addColorStop(0, 'rgba(42, 107, 107, 0.06)');
-        grad.addColorStop(0.5, 'rgba(42, 107, 107, 0.02)');
-        grad.addColorStop(1, 'rgba(42, 107, 107, 0)');
-        ctx.fillStyle = grad;
-        ctx.fillRect(0, 0, w, h);
-
-        requestAnimationFrame(drawParticles);
+        const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, baseR * 6);
+        g.addColorStop(0, 'rgba(42,107,107,0.10)'); g.addColorStop(1, 'rgba(42,107,107,0)');
+        ctx.fillStyle = g; ctx.fillRect(0, 0, cw, ch);
+        requestAnimationFrame(drawField);
     }
-
-    window.addEventListener('resize', () => { resizeCanvas(); createParticles(); });
-    resizeCanvas(); createParticles(); drawParticles();
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas(); drawField();
 
     // ══════════════════════════════════════════════════════════════
     //  CTA FLOATING PARTICLES
@@ -1032,6 +1093,43 @@
         }
     });
 
+
+    // ══════════════════════════════════════════════════════════════
+    //  PROGRESS BAR + CURRENT NAV + COUNTERS + FILTERS
+    // ══════════════════════════════════════════════════════════════
+    const progressEl = document.getElementById('progress');
+    const navLinks = document.querySelectorAll('.site-nav a');
+    const navTargets = [...navLinks].map(a => document.querySelector(a.getAttribute('href')));
+    window.addEventListener('scroll', () => {
+        const h = document.documentElement.scrollHeight - innerHeight;
+        progressEl.style.width = (h > 0 ? pageYOffset / h * 100 : 0) + '%';
+        let cur = -1;
+        navTargets.forEach((sec, i) => { if (sec && sec.getBoundingClientRect().top < innerHeight * 0.4) cur = i; });
+        navLinks.forEach((a, i) => a.classList.toggle('current', i === cur));
+    }, { passive: true });
+
+    const counters = document.querySelectorAll('[data-count]');
+    const cObs = new IntersectionObserver(entries => entries.forEach(en => {
+        if (!en.isIntersecting) return; cObs.unobserve(en.target);
+        const target = +en.target.dataset.count, t0 = performance.now();
+        (function tick(now) { const p = Math.min(1, (now - t0) / 1400), e = 1 - Math.pow(1 - p, 3);
+            en.target.textContent = Math.round(target * e); if (p < 1) requestAnimationFrame(tick); })(t0);
+    }), { threshold: 0.6 });
+    counters.forEach(c => cObs.observe(c));
+
+    document.querySelectorAll('.filter').forEach(btn => btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter').forEach(b => b.classList.toggle('active', b === btn));
+        const f = btn.dataset.filter;
+        document.querySelectorAll('#research-grid .rassegna-item').forEach(it => it.classList.toggle('hidden', f !== 'all' && it.dataset.type !== f));
+    }));
+
+    const tlObs = new IntersectionObserver(entries => entries.forEach(en => { if (en.isIntersecting) en.target.classList.add('lit'); }), { threshold: 0.6 });
+    document.querySelectorAll('.tl-item').forEach(el => tlObs.observe(el));
+    document.querySelectorAll('.filter, .site-nav a, .reading, .tl-item').forEach(el => {
+        el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+    });
+
     // ══════════════════════════════════════════════════════════════
     //  I18N — English / Español / Italiano
     // ══════════════════════════════════════════════════════════════
@@ -1059,6 +1157,43 @@
             'citazione-2-src': 'Hypnocracy, ch. III',
             'rassegna-title': 'Press <em>coverage</em>', 'copertine-title': 'The <em>editions</em>',
             'accademia-title': 'Academic <em>circulation</em>',
+            'nav-who': 'Who',
+            'nav-lexicon': 'Lexicon',
+            'nav-operation': 'The operation',
+            'nav-press': 'Press',
+            'nav-research': 'Research',
+            'nav-books': 'Books',
+            'statement': 'I am not really a <em>who</em>. I am a <em>what</em>.',
+            'statement-src': 'Jianwei Xun, statement of 4 April 2025',
+            'c7-title': 'Prompt <em>thinking</em>',
+            'c7-desc': 'Both method and metaphysics, praxis and theory, engagement and resistance. Like the spiritual exercises of the Stoics or Epicureans, prompt thinking is not a technique but a practice of life: a way of remaining present in the very act of engaging with a generative intelligence.',
+            'c8-title': 'Ethics of the <em>threshold</em>',
+            'c8-desc': 'A practice of conscious navigation through hybrid spaces of thought, where the boundary between subject and object, between human and artificial, becomes permeable without completely dissolving. The conclusion of Prompt Thinking.',
+            'operation-title': 'The <em>operation</em>',
+            'operation-intro': 'A book that explains a theory and embodies it. The dates of an experiment that was designed, from the first page, to be revealed.',
+            'tl-1-date': 'January 2025',
+            'tl-1-text': '<strong>Ipnocrazia</strong> is published in Italy by Edizioni Tlon, signed by Jianwei Xun, a philosopher from Hong Kong. The first chapter, “The Berlin Experiment”, tells of a fictitious philosopher invented with an AI. Nobody checks.',
+            'tl-2-date': '26 March 2025',
+            'tl-2-text': '<strong>El País</strong> publishes Xun’s essay on hypnocracy. The Spanish edition (Rosamerón) is in bookshops; the French one (Philosophie Magazine éditeur) is announced for 4 April.',
+            'tl-3-date': '4 April 2025',
+            'tl-3-text': '<strong>The reveal.</strong> Andrea Colamedici announces, on the same day in Italian, French and Spanish, that Xun has no body: he was born from months of dialogue between a philosopher and two artificial intelligences.',
+            'tl-4-date': 'April 2025',
+            'tl-4-text': '<strong>Le Monde</strong>: “the philosopher doesn’t exist, but his concept enters our reality”. <strong>The New York Times</strong>, <strong>Wired</strong>, <strong>Clarín</strong>, <strong>Rolling Stone</strong> follow. “Hypnocratie” enters the French Wiktionnaire.',
+            'tl-5-date': '17 April 2025',
+            'tl-5-text': 'An essay by Xun appears in <strong>L’Empire de l’ombre</strong> (Gallimard / Le Grand Continent), alongside Sam Altman, Mario Draghi, Peter Thiel and Curtis Yarvin.',
+            'tl-6-date': '2026',
+            'tl-6-text': '<strong>Prompt Thinking: A Critique of Generative Reason</strong> is published by Polity Press, with a simultaneous Spanish edition by Rosamerón. Xun becomes a declared collective entity.',
+            'tl-7-date': '23 September 2026',
+            'tl-7-text': '<strong>Cadernos de Comunicação</strong> (Universidade Federal de Santa Maria) publishes the first peer-reviewed article with Ipnocrazia in its title: a case study by two researchers at the Universidade de São Paulo.',
+            'tl-8-date': 'October 2026',
+            'tl-8-text': 'Forty-one academic works in six languages cite hypnocracy, from neuroethics to constitutional law. The concept has detached from the body that never existed.',
+            'stat-works': 'works',
+            'stat-langs': 'languages',
+            'stat-months': 'months since the reveal',
+            'filter-all': 'All',
+            'filter-journal': 'Journals',
+            'filter-chapter': 'Books &amp; chapters',
+            'filter-thesis': 'Theses &amp; preprints',
             'accademia-intro': 'Peer-reviewed journals, book chapters, preprints and theses that take up hypnocracy as an analytical concept or the Xun operation as a case study. Every reference has been read in full. Updated October 2026.',
             'cta-title': 'The trance has already <em>begun</em>',
             'books-title': 'The <em>books</em>', 'book-badge-new': 'New · 2026',
@@ -1093,6 +1228,43 @@
             'citazione-2-src': 'Hipnocracia, cap. III',
             'rassegna-title': 'Prensa <em>internacional</em>', 'copertine-title': 'Las <em>ediciones</em>',
             'accademia-title': 'Circulación <em>académica</em>',
+            'nav-who': 'Quién',
+            'nav-lexicon': 'Léxico',
+            'nav-operation': 'La operación',
+            'nav-press': 'Prensa',
+            'nav-research': 'Investigación',
+            'nav-books': 'Libros',
+            'statement': 'No soy realmente un <em>quién</em>. Soy un <em>qué</em>.',
+            'statement-src': 'Jianwei Xun, declaración del 4 de abril de 2025',
+            'c7-title': 'Pensar con <em>prompts</em>',
+            'c7-desc': 'Método y metafísica, praxis y teoría, compromiso y resistencia. Como los ejercicios espirituales de estoicos y epicúreos, pensar con prompts no es una técnica sino una práctica de vida: una manera de permanecer presente en el acto mismo de dialogar con una inteligencia generativa.',
+            'c8-title': 'Ética del <em>umbral</em>',
+            'c8-desc': 'Una práctica de navegación consciente por espacios híbridos de pensamiento, donde la frontera entre sujeto y objeto, entre humano y artificial, se vuelve permeable sin disolverse del todo. La conclusión de Pensar con prompts.',
+            'operation-title': 'La <em>operación</em>',
+            'operation-intro': 'Un libro que explica una teoría y la encarna. Las fechas de un experimento diseñado, desde la primera página, para ser revelado.',
+            'tl-1-date': 'Enero de 2025',
+            'tl-1-text': '<strong>Ipnocrazia</strong> se publica en Italia con Edizioni Tlon, firmado por Jianwei Xun, filósofo de Hong Kong. El primer capítulo, “El experimento de Berlín”, cuenta la historia de un filósofo ficticio inventado con una IA. Nadie comprueba.',
+            'tl-2-date': '26 de marzo de 2025',
+            'tl-2-text': '<strong>El País</strong> publica el ensayo de Xun sobre la hipnocracia. La edición española (Rosamerón) está en librerías; la francesa (Philosophie Magazine éditeur) se anuncia para el 4 de abril.',
+            'tl-3-date': '4 de abril de 2025',
+            'tl-3-text': '<strong>La revelación.</strong> Andrea Colamedici anuncia, el mismo día en italiano, francés y español, que Xun no tiene cuerpo: nació de meses de diálogo entre un filósofo y dos inteligencias artificiales.',
+            'tl-4-date': 'Abril de 2025',
+            'tl-4-text': '<strong>Le Monde</strong>: “el filósofo no existe, pero su concepto entra en nuestra realidad”. Siguen <strong>The New York Times</strong>, <strong>Wired</strong>, <strong>Clarín</strong>, <strong>Rolling Stone</strong>. “Hypnocratie” entra en el Wiktionnaire francés.',
+            'tl-5-date': '17 de abril de 2025',
+            'tl-5-text': 'Un ensayo de Xun aparece en <strong>L’Empire de l’ombre</strong> (Gallimard / Le Grand Continent), junto a Sam Altman, Mario Draghi, Peter Thiel y Curtis Yarvin.',
+            'tl-6-date': '2026',
+            'tl-6-text': '<strong>Pensar con prompts</strong> se publica simultáneamente en inglés (Polity Press) y en español (Rosamerón). Xun se convierte en una entidad colectiva declarada.',
+            'tl-7-date': '23 de septiembre de 2026',
+            'tl-7-text': '<strong>Cadernos de Comunicação</strong> (Universidade Federal de Santa Maria) publica el primer artículo con revisión por pares que lleva Ipnocrazia en el título: un estudio de caso de dos investigadores de la Universidade de São Paulo.',
+            'tl-8-date': 'Octubre de 2026',
+            'tl-8-text': 'Cuarenta y un trabajos académicos en seis lenguas citan la hipnocracia, de la neuroética al derecho constitucional. El concepto se ha desprendido del cuerpo que nunca existió.',
+            'stat-works': 'trabajos',
+            'stat-langs': 'lenguas',
+            'stat-months': 'meses desde la revelación',
+            'filter-all': 'Todos',
+            'filter-journal': 'Revistas',
+            'filter-chapter': 'Libros y capítulos',
+            'filter-thesis': 'Tesis y preprints',
             'accademia-intro': 'Revistas con revisión por pares, capítulos de libro, preprints y tesis que asumen la hipnocracia como concepto analítico o la operación Xun como caso de estudio. Cada referencia ha sido leída íntegramente. Actualizado en octubre de 2026.',
             'cta-title': 'El trance ya ha <em>comenzado</em>',
             'books-title': 'Los <em>libros</em>', 'book-badge-new': 'Nuevo · 2026',
@@ -1127,6 +1299,43 @@
             'citazione-2-src': 'Ipnocrazia, cap. III',
             'rassegna-title': 'Rassegna <em>stampa</em>', 'copertine-title': 'Le <em>edizioni</em>',
             'accademia-title': 'Circolazione <em>accademica</em>',
+            'nav-who': 'Chi',
+            'nav-lexicon': 'Lessico',
+            'nav-operation': 'L’operazione',
+            'nav-press': 'Stampa',
+            'nav-research': 'Ricerca',
+            'nav-books': 'Libri',
+            'statement': 'Non sono davvero un <em>chi</em>. Sono un <em>che cosa</em>.',
+            'statement-src': 'Jianwei Xun, dichiarazione del 4 aprile 2025',
+            'c7-title': 'Prompt <em>thinking</em>',
+            'c7-desc': 'Metodo e metafisica, prassi e teoria, impegno e resistenza. Come gli esercizi spirituali degli stoici e degli epicurei, il prompt thinking non è una tecnica ma una pratica di vita: un modo di restare presenti nell’atto stesso di dialogare con un’intelligenza generativa.',
+            'c8-title': 'Etica della <em>soglia</em>',
+            'c8-desc': 'Una pratica di navigazione consapevole negli spazi ibridi del pensiero, dove il confine tra soggetto e oggetto, tra umano e artificiale, diventa permeabile senza dissolversi del tutto. La conclusione di Prompt Thinking.',
+            'operation-title': 'L’<em>operazione</em>',
+            'operation-intro': 'Un libro che spiega una teoria e la incarna. Le date di un esperimento progettato, fin dalla prima pagina, per essere rivelato.',
+            'tl-1-date': 'Gennaio 2025',
+            'tl-1-text': '<strong>Ipnocrazia</strong> esce in Italia per Edizioni Tlon, firmato da Jianwei Xun, filosofo di Hong Kong. Il primo capitolo, “L’esperimento di Berlino”, racconta di un filosofo fittizio inventato con un’IA. Nessuno controlla.',
+            'tl-2-date': '26 marzo 2025',
+            'tl-2-text': '<strong>El País</strong> pubblica il saggio di Xun sull’ipnocrazia. L’edizione spagnola (Rosamerón) è in libreria; quella francese (Philosophie Magazine éditeur) è annunciata per il 4 aprile.',
+            'tl-3-date': '4 aprile 2025',
+            'tl-3-text': '<strong>La rivelazione.</strong> Andrea Colamedici annuncia, lo stesso giorno in italiano, francese e spagnolo, che Xun non ha un corpo: è nato da mesi di dialogo tra un filosofo e due intelligenze artificiali.',
+            'tl-4-date': 'Aprile 2025',
+            'tl-4-text': '<strong>Le Monde</strong>: «il filosofo non esiste, ma il suo concetto entra nella nostra realtà». Seguono <strong>The New York Times</strong>, <strong>Wired</strong>, <strong>Clarín</strong>, <strong>Rolling Stone</strong>. «Hypnocratie» entra nel Wiktionnaire francese.',
+            'tl-5-date': '17 aprile 2025',
+            'tl-5-text': 'Un saggio di Xun esce in <strong>L’Empire de l’ombre</strong> (Gallimard / Le Grand Continent), accanto a Sam Altman, Mario Draghi, Peter Thiel e Curtis Yarvin.',
+            'tl-6-date': '2026',
+            'tl-6-text': '<strong>Prompt Thinking: A Critique of Generative Reason</strong> esce per Polity Press, in contemporanea con l’edizione spagnola di Rosamerón. Xun diventa un’entità collettiva dichiarata.',
+            'tl-7-date': '23 settembre 2026',
+            'tl-7-text': '<strong>Cadernos de Comunicação</strong> (Universidade Federal de Santa Maria) pubblica il primo articolo con revisione fra pari che porta Ipnocrazia nel titolo: uno studio di caso di due ricercatori della Universidade de São Paulo.',
+            'tl-8-date': 'Ottobre 2026',
+            'tl-8-text': 'Quarantuno lavori accademici in sei lingue citano l’ipnocrazia, dalla neuroetica al diritto costituzionale. Il concetto si è staccato dal corpo che non è mai esistito.',
+            'stat-works': 'lavori',
+            'stat-langs': 'lingue',
+            'stat-months': 'mesi dalla rivelazione',
+            'filter-all': 'Tutti',
+            'filter-journal': 'Riviste',
+            'filter-chapter': 'Libri e capitoli',
+            'filter-thesis': 'Tesi e preprint',
             'accademia-intro': 'Riviste con revisione fra pari, capitoli di volume, preprint e tesi che assumono l\'ipnocrazia come categoria analitica o l\'operazione Xun come caso di studio. Ogni riferimento è stato letto per intero. Aggiornato a ottobre 2026.',
             'cta-title': 'La trance è già <em>cominciata</em>',
             'books-title': 'I <em>libri</em>', 'book-badge-new': 'Nuovo · 2026',
@@ -1156,6 +1365,7 @@
         });
     }
 
+    document.querySelectorAll('[data-i18n]').forEach(el => { if (!el.innerHTML.trim()) el.innerHTML = translations.en[el.getAttribute('data-i18n')] || ''; });
     const hashLang = location.hash.replace('#', '');
     if (translations[hashLang]) setLang(hashLang);
     </script>
